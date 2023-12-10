@@ -1,50 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {text-align: left;}
-    h1 {text-align: center; margin: 0; /* Remove default margin for h1 */}
-  </style>
-  <script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://polyfill.io/v3/3.0.0/umd/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <title>LaTeX in HTML with Input</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic LaTeX Equation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/mathjax.js"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex: {
+                extensions: ["mhchem.js"]
+            }
+        });
+    </script>
 </head>
 <body>
+    <h1>Dynamic LaTeX Equation</h1>
+    <p>Enter a value for x:</p>
+    <input type="number" id="input_x" value="5">
+    <br>
+    <p>The equation is: y = x^2 + 1</p>
+    <div id="equation"></div>
 
-  <h1>LaTeX Greek Notation with Input</h1>
+    <script>
+        const inputX = document.getElementById("input_x");
+        const equationDiv = document.getElementById("equation");
 
-  <p>Enter a value for \( \alpha \):</p>
-  <input type="number" id="alphaInput" placeholder="Enter a value">
+        function updateEquation() {
+            const x = inputX.value;
+            const equation = `y = ${x}^2 + 1`;
+            equationDiv.innerHTML = `$$${equation}$$`;
+            MathJax.typesetPromise([equationDiv]);
+        }
 
-  <p>The equation with \( \alpha \) is:</p>
-  <div id="equation" style="font-size: 18px;"></div>
-
-  <script>
-    // Update the equation when the input changes
-    document.getElementById('alphaInput').addEventListener('input', updateEquation);
-
-    // Function to update the displayed equation
-    function updateEquation() {
-      // Get the value from the input
-      var alphaValue = document.getElementById('alphaInput').value;
-
-      // LaTeX equation with Greek notation
-      var equation = '\\[ E = \\frac{1}{2} m v^2 + ' + alphaValue + ' \\]';
-
-      // Use MathJax to render the equation in the 'equation' div
-      MathJax.texReset();
-      MathJax.typeset([document.getElementById('equation')]);
-
-      // Update the innerHTML of the 'equation' div
-      document.getElementById('equation').innerHTML = equation;
-    }
-
-    // Initial update to display the equation with the default value (optional)
-    updateEquation();
-  </script>
-
+        inputX.addEventListener("change", updateEquation);
+        updateEquation();
+    </script>
 </body>
 </html>
+
