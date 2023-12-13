@@ -150,33 +150,33 @@ utility relative to indvidual \(A\).
 <div class="grid-container">
 <div class="grid-item">
   <label for="kASlider">\(k_A\):</label>
-  <input class="slide-input" type="range" id="kASlider" min="0" max="2" step="0.01" value="0.5">
-  <input type="number" id="kAInput" value="0.50" step="0.01">
+  <input class="slide-input" type="range" id="kASlider" min="0" max="2" step="0.001" value="0.5">
+  <input type="number" id="kAInput" value="0.500" step="0.001">
 </div>
 <div class="grid-item">
   <label for="kBSlider">\(k_B\):</label>
-  <input class="slide-input" type="range" id="kBSlider" min="0" max="2" step="0.01" value="0.5">
-  <input type="number" id="kBInput" value="0.50" step="0.01">
+  <input class="slide-input" type="range" id="kBSlider" min="0" max="2" step="0.001" value="0.5">
+  <input type="number" id="kBInput" value="0.500" step="0.001">
 </div>
 <div class="grid-item">
   <label for="lASlider">\(\ell_A\):</label>
-  <input class="slide-input" type="range" id="lASlider" min="0" max="2" step="0.01" value="0.5">
-  <input type="number" id="lAInput" value="0.50" step="0.01">
+  <input class="slide-input" type="range" id="lASlider" min="0" max="2" step="0.001" value="0.5">
+  <input type="number" id="lAInput" value="0.500" step="0.001">
 </div>
 <div class="grid-item">
   <label for="lBSlider">\(\ell_B\):</label>
-  <input class="slide-input" type="range" id="lBSlider" min="0" max="2" step="0.01" value="0.5">
-  <input type="number" id="lBInput" value="0.50" step="0.01">
+  <input class="slide-input" type="range" id="lBSlider" min="0" max="2" step="0.001" value="0.5">
+  <input type="number" id="lBInput" value="0.500" step="0.001">
 </div>
 <div class="grid-item">
   <label for="hXSlider">\(h_X\):</label>
-  <input class="slide-input" type="range" id="hXSlider" min="0" max="2" step="0.01" value="0.5">
-  <input type="number" id="hXInput" value="0.5" step="0.01">
+  <input class="slide-input" type="range" id="hXSlider" min="0" max="2" step="0.001" value="0.5">
+  <input type="number" id="hXInput" value="0.500" step="0.001">
 </div>
 <div class="grid-item">
   <label for="hYSlider">\(h_Y\):</label>
-  <input class="slide-input" type="range" id="hYSlider" min="0" max="2" step="0.01" value="0.5">
-  <input type="number" id="hYInput" value="0.5" step="0.01">
+  <input class="slide-input" type="range" id="hYSlider" min="0" max="2" step="0.001" value="0.5">
+  <input type="number" id="hYInput" value="0.500" step="0.001">
 </div>
 </div>
 <div class="result-container">
@@ -231,8 +231,8 @@ utility relative to indvidual \(A\).
     } else if (element === lBSlider) {
     lASlider.value=Math.min(parseFloat(lASlider.value),ub);
     };
-    lBInput.value = parseFloat(lBSlider.value).toFixed(2);
-    lAInput.value = parseFloat(lASlider.value).toFixed(2);
+    lBInput.value = parseFloat(lBSlider.value).toFixed(3);
+    lAInput.value = parseFloat(lASlider.value).toFixed(3);
     updatehRes();
 };
 
@@ -244,14 +244,14 @@ utility relative to indvidual \(A\).
         const elementValue = Math.min(2,Math.max(0,parseFloat(element.value)));
         const ub = 2-elementValue;
         if (element === lAInput) {
-        lAInput.value=parseFloat(elementValue).toFixed(2);
-        lBInput.value=Math.min(parseFloat(lBInput.value),ub).toFixed(2);
+        lAInput.value=parseFloat(elementValue).toFixed(3);
+        lBInput.value=Math.min(parseFloat(lBInput.value),ub).toFixed(3);
         } else if (element === lBInput) {
-        lBInput.value=parseFloat(elementValue).toFixed(2);
-        lAInput.value=Math.min(parseFloat(lAInput.value),ub).toFixed(2);
+        lBInput.value=parseFloat(elementValue).toFixed(3);
+        lAInput.value=Math.min(parseFloat(lAInput.value),ub).toFixed(3);
         };
-        lBSlider.value = parseFloat(lBInput.value).toFixed(2);
-        lASlider.value = parseFloat(lAInput.value).toFixed(2);
+        lBSlider.value = parseFloat(lBInput.value).toFixed(3);
+        lASlider.value = parseFloat(lAInput.value).toFixed(3);
         updatehRes();
       };
     };
@@ -265,14 +265,14 @@ utility relative to indvidual \(A\).
         const elementValue = Math.min(parseFloat(kRes.value),Math.max(0,parseFloat(element.value)));
         const other = parseFloat(kRes.value)-elementValue;
         if (element === kAInput) {
-        kAInput.value=parseFloat(elementValue).toFixed(2);
-        kBInput.value=other.toFixed(2);
+        kAInput.value=parseFloat(elementValue).toFixed(3);
+        kBInput.value=other.toFixed(3);
         } else if (element === kBInput) {
-        kBInput.value=parseFloat(elementValue).toFixed(2);
-        kAInput.value=other.toFixed(2);
+        kBInput.value=parseFloat(elementValue).toFixed(3);
+        kAInput.value=other.toFixed(3);
         };
-        kBSlider.value = parseFloat(kBInput.value).toFixed(2);
-        kASlider.value = parseFloat(kAInput.value).toFixed(2);
+        kBSlider.value = parseFloat(kBInput.value).toFixed(3);
+        kASlider.value = parseFloat(kAInput.value).toFixed(3);
         updatekRes();
       };
     };
@@ -284,7 +284,7 @@ utility relative to indvidual \(A\).
       const element = event.target;
       if(element.validity.valid){
         const elementValue = Math.max(0,parseFloat(element.value));
-        element.value=elementValue.toFixed(2);
+        element.value=elementValue.toFixed(3);
         updatekRes();
         };
     };
@@ -299,8 +299,8 @@ function updateValueshSlide(event) {
     } else if (element === hYSlider) {
     hXSlider.value=otherVal;
     };
-    hYInput.value = parseFloat(hYSlider.value).toFixed(2);
-    hXInput.value = parseFloat(hXSlider.value).toFixed(2);
+    hYInput.value = parseFloat(hYSlider.value).toFixed(3);
+    hXInput.value = parseFloat(hXSlider.value).toFixed(3);
     updatekRes();
 };
 function updateValueskSlide(event) {
@@ -312,8 +312,8 @@ function updateValueskSlide(event) {
     } else if (element === kBSlider) {
     kASlider.value=otherVal;
     };
-    kBInput.value = parseFloat(kBSlider.value).toFixed(2);
-    kAInput.value = parseFloat(kASlider.value).toFixed(2);
+    kBInput.value = parseFloat(kBSlider.value).toFixed(3);
+    kAInput.value = parseFloat(kASlider.value).toFixed(3);
     updateuRes();
 };
 
@@ -322,15 +322,15 @@ let hBound=parseFloat(hRes.value);
 let hXval=Math.min(hBound,parseFloat(hXSlider.value));
 let hYval=hBound-hXval;
 
-hXSlider.value=hXval.toFixed(2);
-hYSlider.value=hYval.toFixed(2);
+hXSlider.value=hXval.toFixed(3);
+hYSlider.value=hYval.toFixed(3);
 hXSlider.min=0;
 hYSlider.min=0;
 hXSlider.max=hBound;
 hYSlider.max=hBound;
 
-hXInput.value=hXval.toFixed(2);
-hYInput.value=hYval.toFixed(2);
+hXInput.value=hXval.toFixed(3);
+hYInput.value=hYval.toFixed(3);
 updatekRes();
 };
 
@@ -339,15 +339,15 @@ let kBound=parseFloat(kRes.value);
 let kAval=Math.min(kBound,parseFloat(kASlider.value));
 let kBval=kBound-kAval;
 
-kASlider.value=kAval.toFixed(2);
-kBSlider.value=kBval.toFixed(2);
+kASlider.value=kAval.toFixed(3);
+kBSlider.value=kBval.toFixed(3);
 kASlider.min=0;
 kBSlider.min=0;
 kASlider.max=kBound;
 kBSlider.max=kBound;
 
-kAInput.value=kAval.toFixed(2);
-kBInput.value=kBval.toFixed(2);
+kAInput.value=kAval.toFixed(3);
+kBInput.value=kBval.toFixed(3);
 updateuRes();
 };
   alphaInput.addEventListener('blur', updateValuesparInput);
@@ -378,8 +378,8 @@ updateuRes();
     let aval = parseFloat(lAInput.value);
     let bval = parseFloat(lBInput.value);
     let hval = 2 - aval - bval;
-    hRes.value = hval.toFixed(2);
-    hRes.textContent = parseFloat(hRes.value).toFixed(2);
+    hRes.value = hval.toFixed(3);
+    hRes.textContent = parseFloat(hRes.value).toFixed(3);
     updatehBound()
     };
   function updatekRes() {
@@ -387,8 +387,8 @@ updateuRes();
     let hYval = parseFloat(hYInput.value);
     let gamval = parseFloat(gammaInput.value);
     let kval = Math.sqrt(gamval * hXval)+Math.sqrt(hYval);
-    kRes.value = kval.toFixed(2);
-    kRes.textContent = parseFloat(kRes.value).toFixed(2);
+    kRes.value = kval.toFixed(3);
+    kRes.textContent = parseFloat(kRes.value).toFixed(3);
     updatekBound()
     };
   function updateuRes() {
@@ -403,10 +403,10 @@ updateuRes();
     let uBval = Math.log(kBval)+Math.log(lBval);
     let Sval = uAval+betaval*uBval;
 
-    uARes.value = uAval.toFixed(2);
-    uARes.textContent = parseFloat(uARes.value).toFixed(2);
-    uBRes.value = uBval.toFixed(2);
-    uBRes.textContent = parseFloat(uBRes.value).toFixed(2);
+    uARes.value = uAval.toFixed(3);
+    uARes.textContent = parseFloat(uARes.value).toFixed(3);
+    uBRes.value = uBval.toFixed(3);
+    uBRes.textContent = parseFloat(uBRes.value).toFixed(3);
     SRes.value = Sval.toFixed(4);
     SRes.textContent = parseFloat(SRes.value).toFixed(4);
 };
