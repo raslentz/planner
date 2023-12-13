@@ -277,6 +277,26 @@ utility relative to indvidual \(A\).
       };
     };
 };
+  function updateValueshInput(event) {
+    if(event.type === 'blur' || event.key === 'Enter' || event.key ===
+    'ArrowUp' || event.key === 'ArrowDown'){
+      const element = event.target;
+      if(element.validity.valid){
+        const elementValue = Math.min(parseFloat(hRes.value),Math.max(0,parseFloat(element.value)));
+        const other = parseFloat(hRes.value)-elementValue;
+        if (element === hXInput) {
+        hXInput.value=parseFloat(elementValue).toFixed(3);
+        hYInput.value=other.toFixed(3);
+        } else if (element === hYInput) {
+        hYInput.value=parseFloat(elementValue).toFixed(3);
+        hXInput.value=other.toFixed(3);
+        };
+        hYSlider.value = parseFloat(hYInput.value).toFixed(3);
+        hXSlider.value = parseFloat(hXInput.value).toFixed(3);
+        updatekRes();
+      };
+    };
+};
 
   function updateValuesparInput(event) {
     if(event.type === 'blur' || event.key === 'Enter' || event.key ===
@@ -366,6 +386,10 @@ updateuRes();
 
   hXSlider.addEventListener('input', updateValueshSlide);
   hYSlider.addEventListener('input', updateValueshSlide);
+  hXInput.addEventListener('blur', updateValueshInput);
+  hXInput.addEventListener('keydown', updateValueshInput);
+  hYInput.addEventListener('blur', updateValueshInput);
+  hYInput.addEventListener('keydown', updateValueshInput);
 
   kASlider.addEventListener('input', updateValueskSlide);
   kBSlider.addEventListener('input', updateValueskSlide);
